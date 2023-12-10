@@ -32,10 +32,10 @@ export default function Footer() {
   return (
     <footer className="w-full text-center border-t-[1px] border-gray-500 py-10">
       <div className="text-white">
-        Join our{" "}
+        Follow our{" "}
         <a
           className="text-red-700 hover:text-blue-700 duration-300 hover:underline cursor-pointer"
-          href="https://twitter.com/beasty_bits"
+          href="https://twitter.com/@Bacchetta0"
           target="_blank"
           rel="referrer"
         >
@@ -44,7 +44,7 @@ export default function Footer() {
         &{" "}
         <a
           className="text-red-700 hover:text-blue-700 duration-300 hover:underline cursor-pointer"
-          href="https://discord.gg/5AhU6N7spB"
+          href="https://discordapp.com/users/940351112777695333"
           target="_blank"
           rel="referrer"
         >

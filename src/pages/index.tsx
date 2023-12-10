@@ -14,7 +14,7 @@ const Home: NextPage = () => {
     <main className="w-full px-10 py-10">
       <div className="w-full flex justify-center items-center pt-40">
         <img
-          src="img/banner.jpg"
+          src="img/banner.gif"
           className="w-full object-cover justify-center flex items-center"
         />
       </div>

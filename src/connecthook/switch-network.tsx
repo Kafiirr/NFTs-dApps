@@ -1,7 +1,7 @@
 const switchNetworkRequest = () =>
   (window as any).ethereum.request({
     method: "wallet_switchEthereumChain",
-    params: [{ chainId: "0x72" }],
+    params: [{ chainId: "0x413190" }],
   });
 
 const addNetworkRequest = () =>
@@ -9,14 +9,14 @@ const addNetworkRequest = () =>
     method: "wallet_addEthereumChain",
     params: [
       {
-        chainId: "0x72",
-        chainName: "coston2 testnet",
-        rpcUrls: ["https://coston-api.flare.network/ext/bc/C/rpc"],
-        blockExplorerUrls: ["https://coston2-explorer.flare.network/"],
+        chainId: "0x413190",
+        chainName: "Kafir Chain",
+        rpcUrls: ["https://froopyland.dymension.xyz/22/kafirchain_4272528-1/evmrpc"],
+        blockExplorerUrls: ["https://www.kafirchain.my.id/#/kafir"],
         nativeCurrency: {
-          name: "C2FLR",
-          symbol: "C2FLR",
-          decimals: 16,
+          name: "KFR",
+          symbol: "uKFR",
+          decimals: 18,
         },
       },
     ],

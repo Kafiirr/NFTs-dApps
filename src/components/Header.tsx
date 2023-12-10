@@ -18,7 +18,7 @@ export default function Header() {
   const { account, chainId, activate, deactivate } = useWeb3React();
 
   async function connect() {
-    if (chainId !== 114 || chainId === undefined) {
+    if (chainId !== 0x413190 || chainId === undefined) {
       switchNetwork();
     }
     try {
