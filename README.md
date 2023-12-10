@@ -1,4 +1,4 @@
-# mintingdapp-beastybit-eth
+# NFTs-Drops Site
 ![image](https://user-images.githubusercontent.com/29924624/224155523-5c5cf6d0-e596-483b-b420-fdecc289a3f4.png)
 
 Next.js TypeScript Template
@@ -7,7 +7,7 @@ This is a basic template for building a Next.js project with TypeScript. This pr
 Getting Started
 To get started with this project, first clone the repository:
 ```bash
-git clone https://github.com/zeno3618/mintingdapp-beastybit-eth
+git clone https://github.com/Kafiirr/NFTs-dApps.git
 ```
 
 Then install dependencies:
