@@ -84,52 +84,9 @@ export default function Header() {
                 Collection
               </li>
             </Link>
-            <Link href={"/roadmap"}>
-              <li
-                className={`text-[1.5rem] hover:text-white duration-300 transition-all cursor-pointer ${
-                  router.pathname === "/roadmap" ? "text-red-500 underline" : ""
-                }`}
-              >
-                Roadmap
-              </li>
-            </Link>
-            <Link href={"/membership"}>
-              <li
-                className={`text-[1.5rem] hover:text-white duration-300 transition-all cursor-pointer ${
-                  router.pathname === "/membership"
-                    ? "text-red-500 underline"
-                    : ""
-                }`}
-              >
-                Membership
-              </li>
-            </Link>
-            <Link href={"/faq"}>
-              <li
-                className={`text-[1.5rem] hover:text-white duration-300 transition-all cursor-pointer ${
-                  router.pathname === "/faq" ? "text-red-500 underline" : ""
-                }`}
-              >
-                Faq
-              </li>
-            </Link>
-            <Link href={"/token"}>
-              <li
-                className={`text-[1.5rem] hover:text-white duration-300 transition-all cursor-pointer ${
-                  router.pathname === "/token" ? "text-red-500 underline" : ""
-                }`}
-              >
-                Beasttoken
-              </li>
-            </Link>
+            {/* Removed sections: Roadmap, Membership, FAQ, and BeastToken */}
           </ul>
         </div>
-        {/* <div className="flex items-center justify-center">
-          <DiscordIcon color="#000000" />
-        </div>
-        <div className="flex items-center justify-center">
-          <TwitterIcon color="#000000" />
-        </div> */}
       </div>
       <div className="flex items-center justify-center gap-4">
         <button
@@ -153,98 +110,7 @@ export default function Header() {
           <AIicon.AiOutlineMenu size={20} fontWeight={800} />
         </div>
       </div>
-      {open && (
-        <motion.section
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ ease: "easeInOut", duration: 0.2, delay: 0.1 }}
-        >
-          <div className="fixed w-full right-0 bottom-0 left-0 bg-gray-800 min-h-screen opacity-[98%]">
-            <div
-              className="w-full flex justify-end p-7 cursor-pointer"
-              onClick={() => setOpen(false)}
-            >
-              <AIicon.AiOutlineClose color="white" fontWeight={800} size={20} />
-            </div>
-            <div className="w-full p-10 flex justify-center">
-              <div className="w-full text-center">
-                <Link href={"/"}>
-                  <div
-                    className={`text-[2rem] hover:text-white duration-300 transition-all cursor-pointer list-none ${
-                      router.pathname === "/"
-                        ? "text-red-500 underline"
-                        : "text-white"
-                    }`}
-                    onClick={() => setOpen(false)}
-                  >
-                    Home
-                  </div>
-                </Link>
-                <Link href={"/mint"}>
-                  <div
-                    className={`text-[2rem] hover:text-white duration-300 transition-all cursor-pointer list-none ${
-                      router.pathname === "/mint"
-                        ? "text-red-500 underline"
-                        : "text-white"
-                    }`}
-                    onClick={() => setOpen(false)}
-                  >
-                    Collection
-                  </div>
-                </Link>
-                <Link href={"/roadmap"}>
-                  <div
-                    className={`text-[2rem] hover:text-white duration-300 transition-all cursor-pointer list-none ${
-                      router.pathname === "/roadmap"
-                        ? "text-red-500 underline"
-                        : "text-white"
-                    }`}
-                    onClick={() => setOpen(false)}
-                  >
-                    Roadmap
-                  </div>
-                </Link>
-                <Link href={"/membership"}>
-                  <div
-                    className={`text-[2rem] hover:text-white duration-300 transition-all cursor-pointer list-none ${
-                      router.pathname === "/membership"
-                        ? "text-red-500 underline"
-                        : "text-white"
-                    }`}
-                    onClick={() => setOpen(false)}
-                  >
-                    Membership
-                  </div>
-                </Link>
-                <Link href={"/faq"}>
-                  <div
-                    className={`text-[2rem] hover:text-white duration-300 transition-all cursor-pointer list-none ${
-                      router.pathname === "/faq"
-                        ? "text-red-500 underline"
-                        : "text-white"
-                    }`}
-                    onClick={() => setOpen(false)}
-                  >
-                    Faq
-                  </div>
-                </Link>
-                <Link href={"/token"}>
-                  <div
-                    className={`text-[2rem] hover:text-white duration-300 transition-all cursor-pointer list-none ${
-                      router.pathname === "/token"
-                        ? "text-red-500 underline"
-                        : "text-white"
-                    }`}
-                    onClick={() => setOpen(false)}
-                  >
-                    Beasttoken
-                  </div>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </motion.section>
-      )}
+      {/* Removed sections: Roadmap, Membership, FAQ, and BeastToken */}
     </header>
   );
 }

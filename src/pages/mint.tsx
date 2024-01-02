@@ -9,7 +9,7 @@ import PageLoading from "../components/PageLoading";
 import { useWeb3React } from "@web3-react/core";
 import { errorAlert, successAlert } from "../components/toastGroup";
 
-import { CONTRACTADDRESS, gasLimit } from "../config";
+import { CONTRACTADDRESS, gasLimit } from "../config"; // Assuming gasLimit is imported from the config file
 import BEASTYBITABI from "../../public/abi/BEASTYBITABI.json";
 
 const ethers = require("ethers");
@@ -33,8 +33,11 @@ const Mint: NextPage = () => {
       ? new ethers.providers.Web3Provider(window.ethereum)
       : null;
 
+  // Check if the Ethereum provider is not available
   if (!provider) {
     // Handle the case when Ethereum is not present in the browser
+    console.error("Kafirchain not connected");
+    // You may want to inform the user about the lack of Ethereum provider
   }
 
   const settings = {
@@ -53,40 +56,55 @@ const Mint: NextPage = () => {
   const [startLoading, setStartLoading] = useState<boolean>(false);
   const [totalSupply, setTotalSupply] = useState<number>(0);
 
-  const handleMintFunc = () => {
-    if (account) {
-      setStartLoading(true);
-
-      provider.getSigner().sendTransaction({
-        to: CONTRACTADDRESS,
-        value: ethers.utils.parseEther((1 * mintCount).toString()),
-        // Add data to call mint function if needed
-      })
-        .then((tx: { wait: () => Promise<any> }) => {
-          tx.wait().then(() => {
-            setStartLoading(false);
-            successAlert("Mint success!");
-            getTotalSupplyCounts();
-          });
-        })
-        .catch(() => {
-          setStartLoading(false);
-          errorAlert("Minting was canceled.");
-        });
-    } else {
+  const handleMintFunc = async () => {
+    if (!account) {
       // Handle case where no account is connected
+      errorAlert("Please connect your wallet to mint.");
+      return;
+    }
+
+    setStartLoading(true);
+
+    try {
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(
+        CONTRACTADDRESS,
+        BEASTYBITABI,
+        signer
+      );
+
+      const value = ethers.utils.parseEther((1 * mintCount).toString());
+
+      const tx = await signer.sendTransaction({
+        to: CONTRACTADDRESS,
+        value,
+        gasLimit: gasLimit, // Assuming gasLimit is defined and imported from the config
+      });
+
+      await tx.wait();
+      setStartLoading(false);
+      successAlert("Mint success!");
+      getTotalSupplyCounts();
+    } catch (error) {
+      console.error("Minting error:", error);
+      setStartLoading(false);
+      errorAlert("Minting was canceled or failed.");
     }
   };
 
   const getTotalSupplyCounts = async () => {
-    const contract = new ethers.Contract(
-      CONTRACTADDRESS,
-      BEASTYBITABI,
-      provider.getSigner()
-    );
-    const balance = await contract.totalSupply();
-    const count = Number(balance.toString());
-    setTotalSupply(count);
+    try {
+      const contract = new ethers.Contract(
+        CONTRACTADDRESS,
+        BEASTYBITABI,
+        provider.getSigner()
+      );
+      const balance = await contract.totalSupply();
+      const count = Number(balance.toString());
+      setTotalSupply(count);
+    } catch (error) {
+      console.error("Error fetching total supply:", error);
+    }
   };
 
   useEffect(() => {
@@ -94,7 +112,7 @@ const Mint: NextPage = () => {
       getTotalSupplyCounts();
       const interval = setInterval(() => {
         getTotalSupplyCounts();
-      }, 20); // 1 minute
+      }, 60000); // 1 minute in milliseconds
       return () => clearInterval(interval);
     }
   }, [account]);
@@ -120,7 +138,7 @@ const Mint: NextPage = () => {
           NFTs Drops
         </p>
         <p className="text-[1rem] text-white text-center mt-2">
-          Minting Cost = 69 $KFR
+          Minting Cost = FREE!
         </p>
         <div className="w-full flex justify-between p-3 gap-5">
           <button
